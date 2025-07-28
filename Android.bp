@@ -4,14 +4,15 @@
 
 soong_namespace {
     imports: [
-        "vendor/samsung/e3q",
-	"device/samsung/sm8650-common",
+        "device/samsung/sm8650-common",
         "hardware/qcom-caf/sm8650",
         "hardware/qcom-caf/wlan",
         "hardware/samsung",
-        "vendor/qcom/opensource/commonsys/display",
+        "vendor/samsung/sm8650-common",
         "vendor/qcom/opensource/commonsys-intf/display",
+        "vendor/qcom/opensource/commonsys/display",
         "vendor/qcom/opensource/dataservices",
+        "vendor/qcom/opensource/display",
     ],
 }
 
@@ -402,6 +403,7 @@ cc_prebuilt_library_shared {
                 "libhidlmemory",
                 "vendor.qti.hardware.pal@1.0-impl",
                 "vendor.qti.hardware.pal@1.0",
+                "vendor.qti.hardware.AGMIPC@1.0-impl",
                 "vendor.qti.hardware.AGMIPC@1.0",
                 "libagm",
                 "libsecaudioinfo",
@@ -436,7 +438,7 @@ cc_prebuilt_library_shared {
             shared_libs: [
                 "libQSEEComAPI",
                 "liblog",
-                "libcrypto",
+                "libcrypto-v33",
                 "libc++",
                 "libc",
                 "libm",
@@ -1610,75 +1612,40 @@ cc_prebuilt_library_shared {
     soc_specific: true,
 }
 
-cc_prebuilt_library_shared {
-    name: "libagm",
-    owner: "samsung",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/libagm.so",
-            ],
-            shared_libs: [
-                "liblog",
-                "libaudioroute",
-                "libcutils",
-                "libtinyalsa",
-                "libaudio_log_utils",
-                "libexpat",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    check_elf_files: false,
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "libar-pal",
-    owner: "samsung",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/libar-pal.so",
-            ],
-            shared_libs: [
-                "liblog",
-                "libexpat",
-                "libaudioroute",
-                "libcutils",
-                "libutilscallstack",
-                "libvui_intf",
-                "libhidlbase",
-                "libPeripheralStateUtils",
-                "libtinyalsa",
-                "libtinycompress",
-                "libsecaudioinfo",
-                "libsecaudiolevel",
-                "librecordalive",
-                "libspeakercalibration",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    check_elf_files: false,
-    prefer: true,
-    soc_specific: true,
-}
+//cc_prebuilt_library_shared {
+//    name: "libagm",
+//    owner: "samsung",
+//    strip: {
+//        none: true,
+//    },
+//    target: {
+//        android_arm64: {
+//            srcs: [
+//                "proprietary/vendor/lib64/libagm.so",
+//            ],
+//            shared_libs: [
+//               "libar-gsl",
+//                "liblog",
+//                "liblx-osal",
+//                "libaudioroute",
+//                "libats",
+//                "libarmemlog",
+//                "libcutils",
+//                "libtinyalsa",
+//                "libaudio_log_utils",
+//                "libexpat",
+//                "libc++",
+//                "libc",
+//               "libm",
+//                "libdl",
+//            ],
+//        },
+//    },
+//    compile_multilib: "64",
+//    check_elf_files: false,
+//    prefer: true,
+//    soc_specific: true,
+//}
 
 cc_prebuilt_library_shared {
     name: "libarmemlog",
@@ -1694,6 +1661,7 @@ cc_prebuilt_library_shared {
             shared_libs: [
                 "liblog",
                 "libexpat",
+                "liblx-osal",
                 "libc++",
                 "libc",
                 "libm",
@@ -1907,7 +1875,7 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "libhidlbase",
                 "android.hardware.bluetooth@1.0",
-                "vendor.qti.hardware.fm@1.0",
+                "vendor.qti.hardware.fm@1.0_vendor",
                 "liblog",
                 "libc++",
                 "libc",
@@ -5506,36 +5474,6 @@ cc_prebuilt_library_shared {
 }
 
 cc_prebuilt_library_shared {
-    name: "libqti-perfd-client",
-    owner: "samsung",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/libqti-perfd-client.so",
-            ],
-            shared_libs: [
-                "libcutils",
-                "libutils",
-                "liblog",
-                "vendor.qti.hardware.perf2-V1-ndk",
-                "libbase",
-                "libbinder_ndk",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
     name: "libqti-perfd",
     owner: "samsung",
     strip: {
@@ -6030,7 +5968,7 @@ cc_prebuilt_library_shared {
                 "liblog",
                 "libutils",
                 "libcutils",
-                "libsecril-client",
+                "libsecril-client_vendor",
                 "libc++",
                 "libc",
                 "libm",
@@ -6401,7 +6339,7 @@ cc_prebuilt_library_shared {
                 "proprietary/vendor/lib64/libskeymint10device.so",
             ],
             shared_libs: [
-                "libcrypto",
+                "libcrypto-v33",
                 "liblog",
                 "libcutils",
                 "libutils",
@@ -6409,14 +6347,14 @@ cc_prebuilt_library_shared {
                 "libhidlbase",
                 "libbinder_ndk",
                 "libskeymint_cli",
-                "libsecril-client",
+                "libsecril-client_vendor",
                 "vendor.samsung.hardware.keymint-V3-ndk",
                 "android.hardware.security.keymint-V3-ndk",
                 "android.hardware.security.sharedsecret-V1-ndk",
                 "android.hardware.security.secureclock-V1-ndk",
                 "android.hardware.security.rkp-V3-ndk",
                 "libspukeymintdeviceutils",
-                "libcppbor_external",
+                "libcppbor",
                 "libjsoncpp",
                 "libc++",
                 "libc",
@@ -6453,7 +6391,7 @@ cc_prebuilt_library_shared {
                 "libhidlbase",
                 "libcrypto-v33",
                 "libbinder_ndk",
-                "libsecril-client",
+                "libsecril-client_vendor",
                 "android.hardware.security.keymint-V3-ndk",
                 "android.hardware.security.sharedsecret-V1-ndk",
                 "android.hardware.security.secureclock-V1-ndk",
@@ -6872,7 +6810,7 @@ cc_prebuilt_library_shared {
                 "android.hardware.security.keymint-V3-ndk",
                 "android.hardware.security.rkp-V3-ndk",
                 "android.hardware.security.secureclock-V1-ndk",
-                "android.hardware.security.sharedsecret-V1-ndk",
+                "android.hardware.security.sharedsecret-V2-ndk",
                 "libbinder_ndk",
                 "libspukeymintutils",
                 "libc++",
@@ -7617,6 +7555,7 @@ cc_prebuilt_library_shared {
             shared_libs: [
                 "liblog",
                 "libcutils",
+                "liblx-osal",
                 "libc++",
                 "libc",
                 "libm",
@@ -8768,43 +8707,6 @@ cc_prebuilt_library_shared {
                 "liblog",
                 "libutils",
                 "libcutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
-            ],
-        },
-    },
-    compile_multilib: "64",
-    prefer: true,
-    soc_specific: true,
-}
-
-cc_prebuilt_library_shared {
-    name: "vendor.qti.hardware.pal@1.0-impl",
-    owner: "samsung",
-    strip: {
-        none: true,
-    },
-    target: {
-        android_arm64: {
-            srcs: [
-                "proprietary/vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so",
-            ],
-            shared_libs: [
-                "libhidlbase",
-                "libhidltransport",
-                "libutils",
-                "liblog",
-                "libcutils",
-                "libfmq",
-                "libhardware",
-                "libbase",
-                "vendor.qti.hardware.pal@1.0",
-                "libar-pal",
-                "android.hidl.allocator@1.0",
-                "android.hidl.memory@1.0",
-                "libhidlmemory",
                 "libc++",
                 "libc",
                 "libm",
@@ -10449,7 +10351,7 @@ cc_prebuilt_binary {
                 "android.hardware.bluetooth@1.1-impl-qti",
                 "vendor.qti.hardware.bttpi-V3-ndk",
                 "libsoc_helper",
-                "vendor.qti.hardware.fm@1.0",
+                "vendor.qti.hardware.fm@1.0_vendor",
                 "vendor.qti.hardware.bluetooth_sar@1.0",
                 "vendor.qti.hardware.bluetooth_sar@1.1",
                 "vendor.qti.hardware.bttpi-impl",
@@ -10560,8 +10462,8 @@ cc_prebuilt_binary {
                 "android.hardware.security.secureclock-V1-ndk",
                 "libbase",
                 "libbinder_ndk",
-                "libcppbor_external",
-                "libcrypto",
+                "libcppbor",
+                "libcrypto-v33",
                 "libkeymaster_portable",
                 "liblog",
                 "libpuresoftkeymasterdevice",
@@ -10604,7 +10506,7 @@ cc_prebuilt_binary {
                 "android.hardware.security.keymint-V3-ndk",
                 "android.hardware.security.rkp-V3-ndk",
                 "android.hardware.security.secureclock-V1-ndk",
-                "android.hardware.security.sharedsecret-V1-ndk",
+                "android.hardware.security.sharedsecret-V2-ndk",
                 "libc++",
                 "libc",
                 "libm",
