@@ -26,7 +26,7 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <manifest version="1.0" type="device">
-    <hal format="hidl">
+    <!-- hal format="hidl">
         <name>android.hardware.soundtrigger</name>
         <transport>hwbinder</transport>
         <version>2.3</version>
@@ -34,9 +34,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <name>ISoundTriggerHw</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal -->
     <!-- AGM service-->
-    <hal format="hidl">
+    <!-- hal format="hidl">
         <name>vendor.qti.hardware.AGMIPC</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -44,9 +44,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <name>IAGM</name>
             <instance>default</instance>
         </interface>
-    </hal>
+    </hal -->
     <!-- Audio PAL service -->
-    <hal format="hidl">
+    <!--hal format="hidl">
         <name>vendor.qti.hardware.pal</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -55,5 +55,5 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>default</instance>
             </interface>
         <fqname>@1.0::IPAL/default</fqname>
-    </hal>
+    </hal-->
 </manifest>

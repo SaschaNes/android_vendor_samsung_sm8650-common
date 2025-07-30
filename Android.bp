@@ -9,6 +9,7 @@ soong_namespace {
         "hardware/qcom-caf/wlan",
         "hardware/samsung",
         "vendor/samsung/sm8650-common",
+        "hardware/qcom-caf/common/libqti-perfd-client",
         "vendor/qcom/opensource/commonsys-intf/display",
         "vendor/qcom/opensource/commonsys/display",
         "vendor/qcom/opensource/dataservices",
@@ -379,6 +380,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "audio.primary.pineapple",
     owner: "samsung",
+    check_elf_files: false,
     strip: {
         none: true,
     },
@@ -397,15 +399,11 @@ cc_prebuilt_library_shared {
                 "libprocessgroup",
                 "libfmq",
                 "libutils",
-                "libar-pal",
                 "android.hidl.allocator@1.0",
                 "android.hidl.memory@1.0",
                 "libhidlmemory",
-                "vendor.qti.hardware.pal@1.0-impl",
                 "vendor.qti.hardware.pal@1.0",
-                "vendor.qti.hardware.AGMIPC@1.0-impl",
                 "vendor.qti.hardware.AGMIPC@1.0",
-                "libagm",
                 "libsecaudioinfo",
                 "libsecaudiolevel",
                 "librecordalive",
@@ -418,7 +416,6 @@ cc_prebuilt_library_shared {
         },
     },
     compile_multilib: "64",
-    check_elf_files: false,
     relative_install_path: "hw",
     prefer: true,
     soc_specific: true,
@@ -1661,7 +1658,6 @@ cc_prebuilt_library_shared {
             shared_libs: [
                 "liblog",
                 "libexpat",
-                "liblx-osal",
                 "libc++",
                 "libc",
                 "libm",
@@ -1875,7 +1871,7 @@ cc_prebuilt_library_shared {
                 "libutils",
                 "libhidlbase",
                 "android.hardware.bluetooth@1.0",
-                "vendor.qti.hardware.fm@1.0_vendor",
+                "vendor.qti.hardware.fm@1.0",
                 "liblog",
                 "libc++",
                 "libc",
@@ -4439,6 +4435,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libperfgluelayer",
     owner: "samsung",
+    allow_undefined_symbols: true,
     strip: {
         none: true,
     },
@@ -5476,6 +5473,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libqti-perfd",
     owner: "samsung",
+    allow_undefined_symbols: true,
     strip: {
         none: true,
     },
@@ -5546,6 +5544,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libqtigefar",
     owner: "samsung",
+    check_elf_files: false,
     strip: {
         none: true,
     },
@@ -5557,7 +5556,7 @@ cc_prebuilt_library_shared {
             shared_libs: [
                 "liblog",
                 "libcutils",
-                "libar-pal",
+//                "libar-pal",
                 "libc++",
                 "libc",
                 "libm",
@@ -7555,7 +7554,7 @@ cc_prebuilt_library_shared {
             shared_libs: [
                 "liblog",
                 "libcutils",
-                "liblx-osal",
+//                "liblx-osal",
                 "libc++",
                 "libc",
                 "libm",
@@ -10351,7 +10350,7 @@ cc_prebuilt_binary {
                 "android.hardware.bluetooth@1.1-impl-qti",
                 "vendor.qti.hardware.bttpi-V3-ndk",
                 "libsoc_helper",
-                "vendor.qti.hardware.fm@1.0_vendor",
+                "vendor.qti.hardware.fm@1.0",
                 "vendor.qti.hardware.bluetooth_sar@1.0",
                 "vendor.qti.hardware.bluetooth_sar@1.1",
                 "vendor.qti.hardware.bttpi-impl",
@@ -10487,6 +10486,7 @@ cc_prebuilt_binary {
 cc_prebuilt_binary {
     name: "android.hardware.security.keymint-service-spu-qti",
     owner: "samsung",
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
@@ -10655,6 +10655,8 @@ cc_prebuilt_binary {
 cc_prebuilt_binary {
     name: "vendor.qti.hardware.perf2-hal-service",
     owner: "samsung",
+    allow_undefined_symbols: true,
+    check_elf_files: false,
     target: {
         android_arm64: {
             srcs: [
