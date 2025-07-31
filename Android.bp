@@ -18,6 +18,45 @@ soong_namespace {
 }
 
 cc_prebuilt_library_shared {
+    name: "libkeymaster_portable",
+    check_elf_files: false,
+    vendor: true,
+    owner: "samsung",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/libkeymaster_portable.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: false,
+}
+
+
+cc_prebuilt_library_shared {
+    name: "android.hardware.security.keymint-V3-ndk",
+    check_elf_files: false,
+    owner: "samsung",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/lib64/android.hardware.security.keymint-V3-ndk.so",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    prefer: true,
+}
+
+
+cc_prebuilt_library_shared {
     name: "btaudio_offload_if",
     owner: "samsung",
     strip: {
@@ -6329,6 +6368,7 @@ cc_prebuilt_library_shared {
 cc_prebuilt_library_shared {
     name: "libskeymint10device",
     owner: "samsung",
+    check_elf_files: false,
     strip: {
         none: true,
     },
@@ -10446,31 +10486,33 @@ cc_prebuilt_binary {
 
 cc_prebuilt_binary {
     name: "android.hardware.security.keymint-service-qti",
+    check_elf_files: false,
     owner: "samsung",
     target: {
         android_arm64: {
             srcs: [
                 "proprietary/vendor/bin/hw/android.hardware.security.keymint-service-qti",
             ],
-            shared_libs: [
-                "libskeymint10device",
-                "vendor.samsung.hardware.keymint-V3-ndk",
-                "android.hardware.security.keymint-V3-ndk",
-                "android.hardware.security.rkp-V3-ndk",
-                "android.hardware.security.sharedsecret-V1-ndk",
-                "android.hardware.security.secureclock-V1-ndk",
-                "libbase",
-                "libbinder_ndk",
-                "libcppbor",
-                "libcrypto-v33",
-                "libkeymaster_portable",
-                "liblog",
-                "libpuresoftkeymasterdevice",
-                "libutils",
-                "libc++",
-                "libc",
-                "libm",
-                "libdl",
+        },
+    },
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    prefer: true,
+    relative_install_path: "hw",
+    soc_specific: true,
+}
+
+
+cc_prebuilt_binary {
+    name: "android.hardware.security.keymint-service",
+    check_elf_files: false,
+    owner: "samsung",
+    target: {
+        android_arm64: {
+            srcs: [
+                "proprietary/vendor/bin/hw/android.hardware.security.keymint-service",
             ],
         },
     },
@@ -10832,69 +10874,69 @@ cc_prebuilt_binary {
     soc_specific: true,
 }
 
-sh_binary {
-    name: "init.kernel.post_boot-pineapple",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/init.kernel.post_boot-pineapple.sh",
-    filename: "init.kernel.post_boot-pineapple.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "init.kernel.post_boot-pineapple",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/init.kernel.post_boot-pineapple.sh",
+//    filename: "init.kernel.post_boot-pineapple.sh",
+//    soc_specific: true,
+//}
 
-sh_binary {
-    name: "init.kernel.post_boot",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/init.kernel.post_boot.sh",
-    filename: "init.kernel.post_boot.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "init.kernel.post_boot",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/init.kernel.post_boot.sh",
+//    filename: "init.kernel.post_boot.sh",
+//    soc_specific: true,
+//}
 
-sh_binary {
-    name: "init.qcom.class_core",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/init.qcom.class_core.sh",
-    filename: "init.qcom.class_core.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "init.qcom.class_core",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/init.qcom.class_core.sh",
+//    filename: "init.qcom.class_core.sh",
+//    soc_specific: true,
+//}
 
-sh_binary {
-    name: "init.qti.kernel",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/init.qti.kernel.sh",
-    filename: "init.qti.kernel.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "init.qti.kernel",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/init.qti.kernel.sh",
+//    filename: "init.qti.kernel.sh",
+//    soc_specific: true,
+//}
 
-sh_binary {
-    name: "init.qti.media",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/init.qti.media.sh",
-    filename: "init.qti.media.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "init.qti.media",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/init.qti.media.sh",
+//    filename: "init.qti.media.sh",
+//    soc_specific: true,
+//}
 
-sh_binary {
-    name: "init.qti.qcv",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/init.qti.qcv.sh",
-    filename: "init.qti.qcv.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "init.qti.qcv",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/init.qti.qcv.sh",
+//    filename: "init.qti.qcv.sh",
+//    soc_specific: true,
+//}
 
-sh_binary {
-    name: "init.qti.time.daemon",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/init.qti.time.daemon.sh",
-    filename: "init.qti.time.daemon.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "init.qti.time.daemon",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/init.qti.time.daemon.sh",
+//    filename: "init.qti.time.daemon.sh",
+//    soc_specific: true,
+//}
 
-sh_binary {
-    name: "init.qti.write",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/init.qti.write.sh",
-    filename: "init.qti.write.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "init.qti.write",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/init.qti.write.sh",
+//    filename: "init.qti.write.sh",
+//    soc_specific: true,
+//}
 
 cc_prebuilt_binary {
     name: "irsc_util",
@@ -11745,13 +11787,13 @@ cc_prebuilt_binary {
     soc_specific: true,
 }
 
-sh_binary {
-    name: "system_dlkm_modprobe",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/system_dlkm_modprobe.sh",
-    filename: "system_dlkm_modprobe.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "system_dlkm_modprobe",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/system_dlkm_modprobe.sh",
+//    filename: "system_dlkm_modprobe.sh",
+//    soc_specific: true,
+//}
 
 cc_prebuilt_binary {
     name: "tftp_server",
@@ -11903,13 +11945,13 @@ cc_prebuilt_binary {
     soc_specific: true,
 }
 
-sh_binary {
-    name: "vendor_modprobe",
-    owner: "samsung",
-    src: "proprietary/vendor/bin/vendor_modprobe.sh",
-    filename: "vendor_modprobe.sh",
-    soc_specific: true,
-}
+//sh_binary {
+//    name: "vendor_modprobe",
+//    owner: "samsung",
+//    src: "proprietary/vendor/bin/vendor_modprobe.sh",
+//    filename: "vendor_modprobe.sh",
+//    soc_specific: true,
+//}
 
 cc_prebuilt_binary {
     name: "xtra-daemon",

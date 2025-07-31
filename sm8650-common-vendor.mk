@@ -6,6 +6,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/samsung/sm8650-common
 
 PRODUCT_COPY_FILES += \
+#    vendor/samsung/sm8650-common/proprietary/vendor/etc/init/android.hardware.security.keymint-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.security.keymint-service.rc \
     vendor/samsung/sm8650-common/proprietary/product/etc/permissions/UimService.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/UimService.xml \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/audio/sku_pineapple/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_pineapple/audio_effects.conf \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/audio/sku_pineapple/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/sku_pineapple/audio_effects.xml \
@@ -30,12 +31,11 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/android.hardware.bluetooth@1.1-service-qti.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.bluetooth@1.1-service-qti.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/android.hardware.gatekeeper-service.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.gatekeeper-service.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/android.hardware.gnss-aidl-service-qti.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.gnss-aidl-service-qti.rc \
-    vendor/samsung/sm8650-common/proprietary/vendor/etc/init/android.hardware.security.keymint-service-qti.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.security.keymint-service-qti.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/android.hardware.security.keymint-service-spu-qti.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.security.keymint-service-spu-qti.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/dataadpl.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/dataadpl.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/dataqti.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/dataqti.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/hermesd.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hermesd.rc \
-    vendor/samsung/sm8650-common/proprietary/vendor/etc/init/hw/init.qti.kernel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qti.kernel.rc \
+#    vendor/samsung/sm8650-common/proprietary/vendor/etc/init/hw/init.qti.kernel.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.qti.kernel.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/init.audio.samsung.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.audio.samsung.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/init.qccvendor.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.qccvendor.rc \
     vendor/samsung/sm8650-common/proprietary/vendor/etc/init/init.qti.media.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.qti.media.rc \
@@ -530,7 +530,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.1-service-qti \
     android.hardware.gatekeeper-service \
     android.hardware.gnss-aidl-service-qti \
-    android.hardware.security.keymint-service-qti \
+    android.hardware.security.keymint-service \
     android.hardware.security.keymint-service-spu-qti \
     rild \
     vendor.qti.hardware.capabilityconfigstore@1.0-service \
